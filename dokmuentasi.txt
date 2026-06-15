@@ -1,3 +1,10 @@
 alfan bagian setup wordpress
 
 widhia bagian setup network&DB
+
+16 6 2026:
+
+1. setup wordpress berhasil dilakukan ada kendala sedikit kelompok kami bingung awalnya kenapa di localhost db nya error 
+ternyata container wordpress nya masih sedang ngepull ke localhost makanya error hehe :v
+
+2. al hasil setup wordpress sukses dilakukan dengan username gobu!
