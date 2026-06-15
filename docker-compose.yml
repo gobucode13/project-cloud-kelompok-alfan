@@ -1,0 +1,47 @@
+version: '3.8'
+
+networks:
+  frontend-net:
+    driver: bridge
+  backend-net:
+    driver: bridge
+
+volumes:
+  db_data:
+  wp_data:
+
+services:
+  # --- DATABASE LAYER ---
+  db:
+    image: mysql:8.0 # atau mariadb:10.6
+    container_name: wp_database
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_rahasia
+      MYSQL_DATABASE: wordpress_db
+      MYSQL_USER: wp_user
+      MYSQL_PASSWORD: wp_password_rahasia
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - backend-net
+
+  # --- APP LAYER ---
+  wordpress:
+    image: wordpress:latest
+    container_name: wp_app
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wp_user
+      WORDPRESS_DB_PASSWORD: wp_password_rahasia
+      WORDPRESS_DB_NAME: wordpress_db
+    volumes:
+      - wp_data:/var/www/html
+    networks:
+      - frontend-net
+      - backend-net
+    depends_on:
+      - db
