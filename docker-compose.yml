@@ -9,8 +9,10 @@ networks:
 volumes:
   db_data:
   wp_data:
+  minio_data:
 
 services:
+
   # --- DATABASE LAYER ---
   db:
     image: mysql:8.0 # atau mariadb:10.6
@@ -25,6 +27,38 @@ services:
       - db_data:/var/lib/mysql
     networks:
       - backend-net
+
+  # caching layer
+  redis:
+    image: redis:7-alpine
+    container_name: wp_redis
+    restart: always
+    networks:
+      - backend-net
+
+  # --- STORAGE LAYER ---
+  minio:
+    image: minio/minio:latest
+    container_name: wp_minio
+    restart: always
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin_password
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    networks:
+      - frontend-net
+      - backend-net
+
+      
+
+      
+  
+  
 
   # --- APP LAYER ---
   wordpress:
