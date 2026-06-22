@@ -8,4 +8,4 @@ storage layer:
 
 struggle kami adalah kami bingung kenapa setelah setup minio dan membuat bucket dan bucket masih private setelah searching ternyata kami harus install pluggin agar terconnect dengan minio  jadi kami install pluggin advance media offloader (ss tertera)
 
-dan alhasil kami berhasil menyambungkan storage minio ke wordpess yang dimana kita test menggunakan foto saya (alfan) di upload di media wordpress dan saat di upload langsung terupdate ke minio console (ss sudah kami siapkan)
+dan alhasil kami berhasil menyambungkan storage minio ke wordpess yang dimana kita test menggunakan foto saya (alfan) di upload di media wordpress dan saat di upload langsung terupdate ke minio console (ss sudah kami siapkan) dan minio storage dari private menjadi custom karna ternyata kita harus menggunakan custom endpoint agar minio dan wordpress bisa tersambung dan ter sinkronisasi 
