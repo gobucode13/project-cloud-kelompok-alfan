@@ -1,0 +1,11 @@
+23/26/2026
+
+update:
+
+cache layering berhasil di implentasikan dengan menginstall pluggin redis object cache
+
+storage layer:
+
+struggle kami adalah kami bingung kenapa setelah setup minio dan membuat bucket dan bucket masih private setelah searching ternyata kami harus install pluggin agar terconnect dengan minio  jadi kami install pluggin advance media offloader (ss tertera)
+
+dan alhasil kami berhasil menyambungkan storage minio ke wordpess yang dimana kita test menggunakan foto saya (alfan) di upload di media wordpress dan saat di upload langsung terupdate ke minio console (ss sudah kami siapkan)
